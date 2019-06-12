@@ -28,7 +28,7 @@ public class FirstTest {
     logger.debug("DEBUG", new Throwable());
     logger.error("ERROR", new Throwable());
     logger.fatal("FATAL", new Throwable());
-    logger.warn("WARN");
+    logger.warn("WARN", new Throwable());
   }
 }
 
