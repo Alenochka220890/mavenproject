@@ -1,0 +1,30 @@
+<Configuration monitorInterval="30">
+    <script/>
+    <script/>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{[%d{HH:mm:ss.SSS}]
+            | %-5p | %-32.42t | %-32.42c{1} | %m%n}{FATAL=red blink,
+            ERROR=red blink, WARN=yellow bold, INFO=black,
+            DEBUG=green bold, TRACE=blue}"/>
+        </Console>
+        <RollingRandomAccessFile name="RollingRandomAccessFile" fileName="logs/app.log"
+                                 filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout pattern= "%d{HH:mm:ss.SSS}]
+            | %-5p | %-32.42t | %-32.42c{1} | %m%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+        </RollingRandomAccessFile>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+        <AsyncLogger name = "fileLogger" level="info">
+            <AppenderRef ref = "FileAppender"/>
+        </AsyncLogger>
+    </Loggers>
+</Configuration>
+
+
