@@ -1,5 +1,6 @@
 package ru.stqa.yury.otus.test.tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
@@ -14,6 +15,7 @@ public class FirstTest {
   @Test
   public void test() {
     try {
+      WebDriverManager.firefoxdriver().setup();
       driver = new FirefoxDriver();
       driver.get("https://otus.ru/"); //запуск браузера с заданным URL
       String URL = driver.getCurrentUrl(); //берем актуальный URL
